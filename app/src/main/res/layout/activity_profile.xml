@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#472F2B"
+    tools:context=".ProfileActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_button_back">
+
+    <LinearLayout
+        android:id="@+id/profile_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#F7E1B0"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <FrameLayout
+            android:layout_width="84sp"
+            android:layout_height="84sp"
+            android:background="@drawable/circle_border"
+            android:padding="2sp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView_profile"
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="@string/imageView_profile"
+                app:srcCompat="@drawable/img_reg"
+                app:shapeAppearanceOverlay="@style/CircleImageView"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/login_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Логин"/>
+
+        <TextView
+            android:id="@+id/login_view"
+            style="@style/ProfileTextView"
+            android:text="Логин"
+            android:visibility="visible"/>
+
+        <EditText
+            android:id="@+id/login_edit"
+            style="@style/ProfileEditText"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/name_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="ФИО"/>
+
+        <TextView
+            android:id="@+id/name_view"
+            style="@style/ProfileTextView"
+            android:text="ФИО"
+            android:visibility="visible"/>
+
+        <EditText
+            android:id="@+id/name_edit"
+            style="@style/ProfileEditText"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/adress_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Адрес" />
+
+        <TextView
+            android:id="@+id/adress_view"
+            style="@style/ProfileTextView"
+            android:text="Адрес"
+            android:visibility="visible"/>
+
+        <EditText
+            android:id="@+id/adress_edit"
+            style="@style/ProfileEditText"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/date_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Дата рождения"/>
+
+        <TextView
+            android:id="@+id/date_reg"
+            android:clickable="false"
+            style="@style/ProfileTextView"
+            android:hint="Выберите дату"/>
+
+        <TextView
+            android:id="@+id/rate_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Рейтинг"/>
+
+        <TextView
+            android:id="@+id/rate_reg"
+            style="@style/ProfileTextView"
+            android:hint="1000" />
+
+        <TextView
+            android:id="@+id/role_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Роль"/>
+
+        <TextView
+            android:id="@+id/role_reg"
+            style="@style/ProfileTextView"
+            android:hint="Игрок"/>
+
+        <Spinner
+            android:id="@+id/spinner_role"
+            android:layout_width="210dp"
+            android:layout_height="50dp"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/password_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Пароль"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/password_edit"
+            style="@style/ProfileEditText"
+            android:autofillHints=""
+            android:visibility="gone"
+            android:inputType="textPassword"/>
+
+        <TextView
+            android:id="@+id/password_again_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Подтвердите пароль"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/password_again_edit"
+            style="@style/ProfileEditText"
+            android:autofillHints=""
+            android:visibility="gone"
+            android:inputType="textPassword"/>
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/button_cancel"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#472F2B"
+                android:textColor="#FFFFFF"
+                android:text="Отмена"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+
+            <Button
+                android:id="@+id/button_edit"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#472F2B"
+            android:textColor="#FFFFFF"
+            android:text="Редактировать профиль"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/gamesScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_button_back">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_applications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+    </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView_button_back"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintVertical_bias="0.004"
+        app:srcCompat="@drawable/circle_arrow"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Профиль пользователя"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/imageView_button_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView_statistic"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintVertical_bias="0.004"
+        app:srcCompat="@drawable/table"
+        app:tint="#FFFFFF" />
+</androidx.constraintlayout.widget.ConstraintLayout>

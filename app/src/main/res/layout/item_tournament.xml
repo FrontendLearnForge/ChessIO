@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="40dp"
+    app:cardBackgroundColor="#DFBF81"
+    app:strokeColor="#472F2B"
+    app:strokeWidth="3dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="14dp"
+        android:gravity="center_vertical">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/tournament_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Турнир номер 1"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/tournament_date_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Начало: 01.01.2023 - 01.01.2023"
+            android:textSize="14sp" />
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/tournament_date_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Окончание: 12:20 - 18:20"
+            android:textSize="14sp" />
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/tournament_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Адрес проведения: Город Ижевск"
+            android:textSize="14sp" />
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/tournament_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Тип турнира: "
+            android:textSize="14sp" />
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/tournament_format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Формат жеребьевки: Швейцарская система"
+            android:textSize="14sp" />
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/tournament_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Статус турнира: Создан"
+            android:textSize="14sp" />
+    </LinearLayout>
+        <ImageButton
+            android:id="@+id/button_delete"
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:contentDescription="Button cancel application"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/trash"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#472F2B"
+            android:visibility="gone"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

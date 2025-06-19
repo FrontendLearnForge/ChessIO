@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#472F2B"
+    tools:context=".TournamentInformation">
+
+    <!-- Первый LinearLayout (шапка) -->
+    <LinearLayout
+        android:id="@+id/header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#472F2B"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Кнопка назад (слева) -->
+        <ImageView
+            android:layout_marginStart="8sp"
+            android:id="@+id/imageView_button_back"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/circle_arrow"
+            app:tint="#FFFFFF" />
+
+        <!-- Пространство между левой и правыми кнопками -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Группа кнопок справа -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listPlayers_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#472F2B"
+                android:text="Участники:"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/listPlayers_button"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/users"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tours_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:backgroundTint="#472F2B"
+                android:text="Туры:"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/tours_button"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                app:srcCompat="@drawable/play"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ScrollView (занимает оставшееся пространство) -->
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_container">
+
+        <!-- Контейнер с содержимым -->
+        <LinearLayout
+            android:id="@+id/profile_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F7E1B0"
+            android:gravity="center|top"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tournamentName"
+                style="@style/ProfileTextView"
+                android:layout_marginTop="10sp"
+                android:text="Название турнира"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tournamentDateStart_label"
+                style="@style/ProfileTextViewLabel"
+                android:text="Начало:"/>
+
+            <TextView
+                android:id="@+id/tournamentDateStart"
+                style="@style/ProfileTextView"
+                android:text="Дата турнира"/>
+
+            <TextView
+                android:id="@+id/tournamentDateEnd_label"
+                style="@style/ProfileTextViewLabel"
+                android:text="Окончание:"/>
+
+            <TextView
+                android:id="@+id/tournamentDateEnd"
+                style="@style/ProfileTextView"
+                android:text="Дата турнира"/>
+
+            <TextView
+                android:id="@+id/tournamentNameReferee_label"
+                style="@style/ProfileTextViewLabel"
+                android:text="Судья:"/>
+
+            <TextView
+                android:id="@+id/tournamentNameReferee"
+                style="@style/ProfileTextView"
+                android:text="ФИО судьи"/>
+
+            <TextView
+                android:id="@+id/tournamentAddress_label"
+                style="@style/ProfileTextViewLabel"
+                android:text="Адрес проведения:"/>
+
+            <TextView
+                android:id="@+id/tournamentAddress"
+                style="@style/ProfileTextView"
+                android:text="Адрес"/>
+
+            <TextView
+                android:id="@+id/tournamentType_label"
+                style="@style/ProfileTextViewLabel"
+                android:text="Тип турнира:"/>
+
+            <TextView
+                android:id="@+id/tournamentType"
+                style="@style/ProfileTextView"
+                android:text="Личный"/>
+
+            <TextView
+                android:id="@+id/tournamentFormat_label"
+                style="@style/ProfileTextViewLabel"
+                android:text="Формат жеребьевки:"/>
+
+            <TextView
+                android:id="@+id/tournamentFormat"
+                style="@style/ProfileTextView"
+                android:text="Швейцарская система"/>
+
+            <TextView
+                android:id="@+id/numberTours_label"
+                style="@style/ProfileTextViewLabel"
+                android:text="Количество туров:"/>
+
+            <TextView
+                android:id="@+id/numberTours"
+                style="@style/ProfileTextView"
+                android:text="12"/>
+
+            <Button
+                android:id="@+id/application_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#472F2B"
+                android:text="Подать заявку"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

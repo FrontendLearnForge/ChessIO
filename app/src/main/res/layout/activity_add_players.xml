@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#472F2B"
+    tools:context=".AddPlayers">
+
+    <!-- Первый LinearLayout (шапка) -->
+    <LinearLayout
+        android:id="@+id/header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#472F2B"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Кнопка назад (слева) -->
+        <ImageView
+            android:layout_marginStart="8sp"
+            android:id="@+id/imageView_button_back"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/circle_arrow"
+            app:tint="#FFFFFF" />
+
+        <!-- Пространство между левой и правыми кнопками -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Группа кнопок справа -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView_applications"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:srcCompat="@drawable/clipboard"
+                app:tint="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/imageView_add_player"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:srcCompat="@drawable/user_plus"
+                app:tint="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/imageView_delete_player"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:srcCompat="@drawable/user_x"
+                app:tint="#FFFFFF" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Основной контейнер с содержимым -->
+    <LinearLayout
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#F7E1B0"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_container">
+
+        <!-- Заголовок таблицы -->
+        <TextView
+            android:id="@+id/listPlayers_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Список участников:"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <!-- Контейнер с таблицей и скроллом -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="#000000"
+                    android:showDividers="middle"
+                    android:stretchColumns="*"
+                    android:shrinkColumns="*">
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:background="@drawable/table_cell_left_top"
+                            android:padding="2dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="№"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.9"
+                            android:background="@drawable/table_cell_top"
+                            android:padding="2dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="ФИО"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.55"
+                            android:background="@drawable/table_cell_top"
+                            android:padding="2dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="Рейтинг"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1" />
+
+                        <TextView
+                            android:id="@+id/teamHeader"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.55"
+                            android:background="@drawable/table_cell_top"
+                            android:padding="2dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="Команда"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1" />
+
+                        <TextView
+                            android:id="@+id/buttonDeleteHeader"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
+                            android:background="@drawable/table_cell_top"
+                            android:padding="2dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text=""
+                            android:visibility="gone"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1" />
+                    </TableRow>
+                </TableLayout>
+            </HorizontalScrollView>
+        </ScrollView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/applications_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Заявки на участие:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_applications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/applications_label" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

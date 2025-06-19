@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gameCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="#DFBF81"
+    app:strokeColor="#472F2B"
+    app:strokeWidth="3dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Название турнира -->
+        <TextView
+            android:id="@+id/tournamentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Чемпионат мира по шахматам 2023"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="8dp"/>
+
+        <!-- Разделительная линия -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#472F2B"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Информация о матче -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="3">
+
+            <!-- Игрок 1 -->
+            <TextView
+                android:id="@+id/player1Name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:text="Карлсен М."
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:gravity="end"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+
+            <!-- Результат -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 - 0"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <!-- Игрок 2 -->
+            <TextView
+                android:id="@+id/player2Name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:text="Непомнящий Я."
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:gravity="start"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#472F2B"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/profile_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DFBF81"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <TextView
+        android:id="@+id/chessIO_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30sp"
+        android:fontFamily="@font/libre_baskerville"
+        android:text="ChessIO"
+        android:textColor="#FFFFFF"
+        android:textSize="38sp" />
+
+    <TextView
+        android:id="@+id/login_label"
+        style="@style/ProfileTextViewLabel"
+        android:text="Логин:"
+        android:layout_marginTop="50sp"/>
+
+    <EditText
+        android:id="@+id/login"
+        style="@style/ProfileEditText"/>
+
+    <TextView
+    android:id="@+id/password_label"
+        style="@style/ProfileTextViewLabel"
+    android:text="Пароль:"/>
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/ProfileEditText"
+        android:inputType="textPassword"/>
+
+
+    <Button
+        android:id="@+id/button_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:backgroundTint="#472F2B"
+        android:textColor="#FFFFFF"
+        android:text="Войти"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="100sp"
+        android:backgroundTint="#472F2B"
+        android:textColor="#FFFFFF"
+        android:text="Зарегистрироваться"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_enter" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

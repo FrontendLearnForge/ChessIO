@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7E1B0"
+    tools:context=".Tours">
+
+    <!-- Первый LinearLayout (шапка) -->
+    <LinearLayout
+        android:id="@+id/header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#472F2B"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Кнопка назад (слева) -->
+        <ImageView
+            android:layout_marginStart="8sp"
+            android:id="@+id/imageView_button_back"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/circle_arrow"
+            app:tint="#FFFFFF" />
+
+        <!-- Пространство между левой и правыми кнопками -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Группа кнопок справа -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/statistic_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#472F2B"
+                android:text="Статистика:"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/button_statistic"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                app:srcCompat="@drawable/table"
+                app:tint="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/button_export"
+                android:visibility="gone"
+                android:layout_marginStart="12dp"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                app:srcCompat="@drawable/ic_export"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/listPlayers_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Список игровых пар:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_container"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/CountTours"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/listPlayers_label"
+        app:layout_constraintVertical_bias="0.0">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:collapseColumns="*"
+                android:divider="#000000"
+                android:showDividers="middle"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:background="@drawable/table_cell_left_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="2dp"
+                        android:text="№"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.52"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Белые"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Очки"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.55"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Черные"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Очки"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Итог"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollViewStatistic"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/CountTours"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/listPlayers_label"
+        app:layout_constraintVertical_bias="0.0">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:id="@+id/tableStatisticLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:collapseColumns="*"
+                android:divider="#000000"
+                android:showDividers="middle"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:background="@drawable/table_cell_left_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="2dp"
+                        android:text="№"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Очки"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Бухгольц"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="ФИО"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/table_cell_top"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="2dp"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Рейтинг"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/CountTours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="#472F2B"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.956" />
+
+    <ImageButton
+        android:id="@+id/button_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:backgroundTint="#F7E1B0"
+        android:contentDescription="@string/button_right"
+        android:padding="12dp"
+        android:src="@drawable/arrowright"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintStart_toEndOf="@+id/CountTours"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.959" />
+
+    <Button
+        android:id="@+id/button_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="#472F2B"
+        android:text="Изменить\nрезультат"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button_right"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.041" />
+
+    <ImageButton
+        android:id="@+id/button_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="#F7E1B0"
+        android:contentDescription="@string/button_left"
+        android:padding="12dp"
+        android:src="@drawable/arrowleft"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/CountTours"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.959" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

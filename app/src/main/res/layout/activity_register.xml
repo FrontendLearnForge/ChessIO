@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#472F2B"
+    tools:context=".RegisterActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_button_back">
+
+    <LinearLayout
+        android:id="@+id/profile_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#F7E1B0"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <FrameLayout
+            android:layout_width="84sp"
+            android:layout_height="84sp"
+            android:background="@drawable/circle_border"
+            android:padding="2dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="10dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView_profile"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/imageView_profile"
+            app:srcCompat="@drawable/img_reg"
+            app:shapeAppearanceOverlay="@style/CircleImageView"/>
+    </FrameLayout>
+
+        <TextView
+            android:id="@+id/login_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Логин*"/>
+
+        <EditText
+            android:id="@+id/login_reg"
+            style="@style/ProfileEditText"/>
+
+        <TextView
+            android:id="@+id/name_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="ФИО*" />
+
+        <EditText
+            android:id="@+id/name_reg"
+            style="@style/ProfileEditText"/>
+
+        <TextView
+            android:id="@+id/adress_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Адрес*" />
+
+        <EditText
+            android:id="@+id/adress_reg"
+            style="@style/ProfileEditText" />
+
+
+        <TextView
+            android:id="@+id/date_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Дата рождения*" />
+
+        <TextView
+            android:id="@+id/date_reg"
+            style="@style/ProfileTextView"
+            android:hint="Выберите дату" />
+
+        <TextView
+            android:id="@+id/password_reg_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Пароль*"/>
+
+        <EditText
+            android:id="@+id/password_reg"
+            style="@style/ProfileEditText"
+            android:inputType="textPassword"/>
+
+        <TextView
+            android:id="@+id/password_again_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Подтвердите пароль*"/>
+
+        <EditText
+            android:id="@+id/password_again_reg"
+            style="@style/ProfileEditText"
+            android:inputType="textPassword"/>
+
+
+    <Button
+        android:id="@+id/button_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#472F2B"
+        android:text="Зарегистрироваться"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView_button_back"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintVertical_bias="0.004"
+        app:srcCompat="@drawable/circle_arrow"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Регистрация"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/imageView_button_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

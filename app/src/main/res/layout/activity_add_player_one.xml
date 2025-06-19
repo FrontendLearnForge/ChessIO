@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F7E1B0"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+        <!-- Добавляем RelativeLayout для кнопки назад -->
+        <RelativeLayout
+            android:layout_width="260dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView_button_back"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/x"
+                app:tint="#000000" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/name_player_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="ФИО*" />
+
+
+        <EditText
+            android:id="@+id/name_player"
+            style="@style/ProfileEditText"
+            android:hint="Введите текст"
+            android:inputType="text"/>
+
+        <TextView
+            android:id="@+id/rate_player_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Рейтинг*"/>
+
+        <EditText
+            android:id="@+id/rate_player"
+            style="@style/ProfileEditText"
+            android:hint="Введите текст"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/team_player_label"
+            style="@style/ProfileTextViewLabel"
+            android:text="Команда*" />
+
+        <EditText
+            android:id="@+id/team_player"
+            style="@style/ProfileEditText"
+            android:hint="Введите текст" />
+
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#472F2B"
+            android:text="Добавить"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>

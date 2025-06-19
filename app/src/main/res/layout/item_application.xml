@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    app:cardBackgroundColor="#FFFFFFFF"
+    app:cardCornerRadius="40dp"
+    app:strokeColor="#000000"
+    app:strokeWidth="3dp"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="14dp"
+
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/user_info_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/text_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:textSize="16sp" />
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/text_team_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="test"
+            android:visibility="gone"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/text_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="test"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/button_reject"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:contentDescription="Button cancel application"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/x_square"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#F44336" />
+
+        <ImageButton
+            android:id="@+id/button_approve"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:contentDescription="Button accept application"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/tick"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#4CAF50" />
+</LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
