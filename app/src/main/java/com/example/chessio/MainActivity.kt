@@ -15,6 +15,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var webSocketManager: WebSocketManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -35,7 +38,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         buttonEnter.setOnClickListener {
             val loginText = login.text.toString().trim()
             val passwordText = password.text.toString().trim()
@@ -45,60 +47,74 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val user = EnterUser(loginText, passwordText)
-
-            RetrofitClient.apiService.enterUser(user).enqueue(object : Callback<User> {
-                override fun onResponse(call: Call<User>, response: Response<User>) {
-                    if (response.isSuccessful) {
-                        val currentUser = response.body()
-                        if (currentUser != null) {
-                            val sharedPref =
-                                getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
-                            sharedPref.edit().apply {
-                                putString("current_user_login", currentUser.login)
-                                putString("current_user_role", currentUser.role)
-                                apply()
-                            }
-
-                            Toast.makeText(this@MainActivity, "Вход выполнен", Toast.LENGTH_SHORT)
-                                .show()
-
-                            // Переход в основное приложение
-                            val intent = Intent(this@MainActivity, TournamentsList::class.java)
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            Toast.makeText(
-                                this@MainActivity,
-                                "Ошибка: пустой ответ сервера",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    } else {
-                        when (response.code()) {
-                            401 -> Toast.makeText(
-                                this@MainActivity,
-                                "Неверный логин или пароль",
-                                Toast.LENGTH_SHORT
-                            ).show()
-
-                            else -> Toast.makeText(
-                                this@MainActivity,
-                                "Ошибка ${response.code()}: ${response.message()}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<User>, t: Throwable) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Сетевая ошибка: ${t.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            })
+            enterUser(EnterUser(loginText, passwordText))
         }
     }
+
+    private fun enterUser(user: EnterUser) {
+        RetrofitClient.apiService.enterUser(user).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    val currentUser = response.body()
+                    if (currentUser != null) {
+                        val sharedPref = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+                        sharedPref.edit().apply {
+                            putString("current_user_login", currentUser.login)
+                            putString("current_user_role", currentUser.role)
+                            apply()
+                        }
+
+                        initWebSocket(currentUser.login)
+
+                        Toast.makeText(this@MainActivity, "Вход выполнен", Toast.LENGTH_SHORT)
+                            .show()
+
+                        val intent = Intent(this@MainActivity, TournamentsList::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Ошибка: пустой ответ сервера",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    when (response.code()) {
+                        401 -> Toast.makeText(
+                            this@MainActivity,
+                            "Неверный логин или пароль",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        else -> Toast.makeText(
+                            this@MainActivity,
+                            "Ошибка ${response.code()}: ${response.message()}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Сетевая ошибка: ${t.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+    }
+
+    private fun initWebSocket(userLogin: String) {
+        webSocketManager = WebSocketManager(this, userLogin)
+        webSocketManager.connect()
+    }
+
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        if (::webSocketManager.isInitialized) {
+//            webSocketManager.disconnect()
+//        }
+//    }
 }

@@ -49,25 +49,13 @@ class TournamentCreate : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-//        setContentView(R.layout.activity_tournament_create)
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
-
-
-        // 1. Вставляем контент турниров в content_frame из activity_menu.xml
         val tournamentCreateContent = layoutInflater.inflate(
             R.layout.activity_tournament_create,
             findViewById(R.id.content_frame)
         )
 
-        // 2. Находим tournament_container ВНУТРИ добавленного контента
         tournamentCreateContainer = tournamentCreateContent.findViewById(R.id.tournamnet_create_container)
 
-        // 3. Настраиваем остальное
         setupToolbar("Создание турнира")
         updateNavHeader()
 
@@ -93,7 +81,6 @@ class TournamentCreate : BaseActivity() {
                 val nameReferee = tournamentRefereeName.text.toString().trim()
                 val address = tournamentAddress.text.toString().trim()
                 val numberToursText = tournamentNumberTours.text.toString().trim()
-                // Получаем логин текущего пользователя из SharedPreferences
                 val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
                 val userLogin = sharedPreferences.getString("current_user_login", null) ?: run {
                     Toast.makeText(this, "Ошибка: пользователь не авторизован", Toast.LENGTH_LONG).show()
@@ -155,9 +142,8 @@ class TournamentCreate : BaseActivity() {
     private fun setupSpinners() {
         val tournamentTypes = arrayOf("Личный", "Командный")
         val tournamentFormats = arrayOf("Швейцарская система", "Круговая система", "Олимпийская система")
-        // Для типа турнира
         tournamentType.adapter = ArrayAdapter(this, R.layout.spinner_item, tournamentTypes).apply {
-            setDropDownViewResource(R.layout.spinner_dropdown_item) // Ваш выпадающий макет
+            setDropDownViewResource(R.layout.spinner_dropdown_item)
         }
 
         tournamentType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -210,12 +196,10 @@ class TournamentCreate : BaseActivity() {
                         currentCalendar.set(Calendar.HOUR_OF_DAY, hour)
                         currentCalendar.set(Calendar.MINUTE, minute)
 
-                        // Формат для отображения пользователю
                         val displayFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).apply {
                             timeZone = moscowTimeZone
                         }
 
-                        // Формат для отправки на сервер
                         val serverFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).apply {
                             timeZone = moscowTimeZone
                         }

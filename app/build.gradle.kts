@@ -58,16 +58,12 @@ dependencies {
 
     implementation(libs.android.pdf.viewer)
 
-    // Excel (Apache POI)
     implementation(libs.poi)
     implementation(libs.poi.ooxml)
-//    implementation(libs.poi.on.android)
-    // EasyExcel
-//    implementation(libs.easyexcel)
-//    implementation(libs.alibaba.easyexcel)
+
+    implementation(libs.java.websocket)
 
     implementation(libs.glide)
-//    kapt(libs.glide.compiler)  // Для обработки аннотаций Glide
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

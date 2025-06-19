@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
@@ -20,9 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChessIO"
         tools:targetApi="31" >
-        <activity
-            android:name=".TestExcelActivity"
-            android:exported="false" />
+
         <activity
             android:name=".UsersList"
             android:exported="false" />

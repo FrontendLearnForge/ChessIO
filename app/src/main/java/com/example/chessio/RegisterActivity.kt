@@ -93,7 +93,7 @@ class RegisterActivity : AppCompatActivity() {
             val address = userAddress.text.toString().trim()
             val date = userDateBirth.text.toString().trim()
             val rate = 1000
-            val role = "Организатор"
+            val role = "Игрок"
             val password = userPassword.text.toString().trim()
             val passwordAgain = userPasswordAgain.text.toString().trim()
 
@@ -125,15 +125,12 @@ class RegisterActivity : AppCompatActivity() {
         password: String
     ) {
         if (selectedImageUri == null) {
-            // Если изображение не выбрано, отправляем данные без него
             sendUserData(login, name, address, date, rate, role, password, "")
             return
         }
-        // Сначала загружаем изображение
         uploadImage { imageUrl ->
             runOnUiThread {
                 if (imageUrl != null) {
-                    // После успешной загрузки изображения отправляем данные пользователя
                     sendUserData(login, name, address, date, rate, role, password, imageUrl)
                 } else {
                     Toast.makeText(this, "Ошибка загрузки изображения", Toast.LENGTH_LONG).show()
@@ -147,11 +144,9 @@ class RegisterActivity : AppCompatActivity() {
         selectedImageUri?.let { uri ->
             val file = createTempImageFile(uri)
             file?.let {
-                // Создаем запрос для загрузки файла
                 val requestFile = it.asRequestBody("image/*".toMediaTypeOrNull())
                 val imagePart = MultipartBody.Part.createFormData("image", it.name, requestFile)
 
-                // Выполняем запрос на загрузку изображения
                 RetrofitClient.apiService.uploadImage(imagePart).enqueue(object : Callback<ImageResponse> {
                     override fun onResponse(call: Call<ImageResponse>, response: Response<ImageResponse>) {
                         if (response.isSuccessful) {
@@ -172,7 +167,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun sendUserData(login: String, name: String, address: String, date: String, rate: Int, role: String, password: String, imageUrl: String) {
-        // Создаем объект пользователя
         val user = User(
             login = login,
             imageUrl = imageUrl,
@@ -184,7 +178,6 @@ class RegisterActivity : AppCompatActivity() {
             password = password
         )
 
-        // Выполняем запрос регистрации
         RetrofitClient.apiService.registerUser(user).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
