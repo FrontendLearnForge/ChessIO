@@ -225,14 +225,10 @@ class Tours : AppCompatActivity() {
             row.createCell(0).setCellValue((index + 1).toDouble())
             row.createCell(1).setCellValue(player.points.toDouble())
             row.createCell(2).setCellValue(player.coefficientPoints.toDouble())
-            row.createCell(3).setCellValue(player.fullName ?: "")
+            row.createCell(3).setCellValue(player.fullName)
             row.createCell(4).setCellValue(player.rate.toDouble())
         }
 
-        // Автонастройка ширины столбцов
-//        for (i in 0..4) {
-////            sheet.autoSizeColumn(i)
-//        }
 
         // Сохраняем файл
         val fileName = "tournament_stats_${System.currentTimeMillis()}.xlsx"
